@@ -30,11 +30,13 @@ echo "Keep reports count ${INPUT_KEEP_REPORTS}"
 INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS+1))
 echo "If ${COUNT} > ${INPUT_KEEP_REPORTS}"
 if (( COUNT > INPUT_KEEP_REPORTS )); then
-  cd ./${INPUT_REPORT_HISTORY}
-  rm report.html report.json -rv
-  echo "Remove old reports"
-  ls | sort -n | grep -v 'CNAME' | head -n -$((${INPUT_KEEP_REPORTS}-2)) | xargs rm -rv;
+  echo "Removing the folder with the smallest number..."
+  REPORT_TO_DELETE=$(ls -d ./${INPUT_REPORT_HISTORY}/*/ | sort -n | head -n 1)
+  rm -rv "${REPORT_TO_DELETE}"
+  pwd
   cd ${GITHUB_WORKSPACE}
+  pwd
+  ls
 fi
 
 # Rename INPUT_MOCHAWESOME_REPORT folder to INPUT_SUBFOLDER

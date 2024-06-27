@@ -26,6 +26,7 @@ jobs:
         if: always()
         with:
           subfolder: regression
+          keep_reports: 1
           mochawesome_report: mochawesome-report
           gh_pages: gh-pages
           report_history: report-history

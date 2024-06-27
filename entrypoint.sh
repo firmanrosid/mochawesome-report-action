@@ -24,7 +24,7 @@ if [[ ${INPUT_SUBFOLDER} != '' ]]; then
     echo "Updated GITHUB_PAGES_WEBSITE_URL: ${GITHUB_PAGES_WEBSITE_URL}"
 fi
 
-COUNT=$( ( ls ./${INPUT_REPORT_HISTORY} | wc -l ) )
+COUNT=7
 echo "Count folders in report-history: ${COUNT}"
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
 INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS+1))
@@ -56,4 +56,4 @@ fi
 # Rename report.html files to index.html
 # find "$INPUT_REPORT_HISTORY" -type f -name 'report.html' -execdir mv {} index.html \;
 
-ls -R
+# ls -R

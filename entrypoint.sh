@@ -28,12 +28,13 @@ fi
 COUNT=$( (ls ./${INPUT_REPORT_HISTORY} | wc -l))
 echo "Count folders in report-history: ${COUNT}"
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
-echo "If ${COUNT} == ${INPUT_KEEP_REPORTS} elif ${COUNT} > ${INPUT_KEEP_REPORTS}"
-if ((COUNT == INPUT_KEEP_REPORTS)); then
+echo "Removing the folder with the smallest number..."
+if (( COUNT == INPUT_KEEP_REPORTS )); then
+  echo "If ${COUNT} == ${INPUT_KEEP_REPORTS}"
   ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n 1 | xargs rm -rv
-elif ((COUNT > INPUT_KEEP_REPORTS)); then
-  echo "Removing the folder with the smallest number..."
-  ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n $((COUNT - INPUT_KEEP_REPORTS)) | xargs rm -rv
+elif (( COUNT > INPUT_KEEP_REPORTS )); then
+  echo "elif ${COUNT} > ${INPUT_KEEP_REPORTS}"
+  ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n $(( COUNT - INPUT_KEEP_REPORTS )) | xargs rm -rv
 fi
 
 # Rename INPUT_MOCHAWESOME_REPORT folder to INPUT_SUBFOLDER

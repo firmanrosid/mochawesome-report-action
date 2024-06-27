@@ -7,4 +7,4 @@ RUN mkdir -p $ROOT
 WORKDIR $ROOT
 COPY ./entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/bin/busybox", "sh", "/entrypoint.sh"]

@@ -1,0 +1,21 @@
+name: mochawesome-report
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  mochawesome-pr:
+    name: Check Mochawesome Report Action on Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mochawesome Report Action
+        uses: firmanrosid/mochawesome-report-action@master
+        if: always()
+        with:
+          subfolder: regression
+          report: mochawesome-report
+          gh_pages: gh-pages
+          report_history: report-history

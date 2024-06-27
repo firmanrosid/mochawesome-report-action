@@ -27,6 +27,7 @@ fi
 COUNT=$( (ls ./${INPUT_REPORT_HISTORY} | wc -l))
 echo "Count folders in report-history: ${COUNT}"
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
+INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS + 1))
 echo "If ${COUNT} > ${INPUT_KEEP_REPORTS}"
 if ((COUNT > INPUT_KEEP_REPORTS)); then
   echo "Echo 1"
@@ -34,7 +35,7 @@ if ((COUNT > INPUT_KEEP_REPORTS)); then
   echo "Echo 2"
   ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V
   echo "Removing the folder with the smallest number..."
-  ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n $((COUNT - INPUT_KEEP_REPORTS)) | xargs rm -rv
+  ls | sort -n | grep -v 'CNAME' | head -n -$((${INPUT_KEEP_REPORTS} - 2)) | xargs rm -rv
   cd ${GITHUB_WORKSPACE}
 fi
 

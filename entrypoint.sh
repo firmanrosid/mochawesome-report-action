@@ -24,52 +24,17 @@ if [[ ${INPUT_SUBFOLDER} != '' ]]; then
   echo "Updated GITHUB_PAGES_WEBSITE_URL: ${GITHUB_PAGES_WEBSITE_URL}"
 fi
 
-if [[ ! -d "${INPUT_REPORT_HISTORY}" ]]; then
-  echo "Error: Directory ${INPUT_REPORT_HISTORY} not found."
-  exit 1
-fi
-COUNT=$(ls -d ./${INPUT_REPORT_HISTORY}/*/ 2>/dev/null | wc -l)
+COUNT=$( (ls ./${INPUT_REPORT_HISTORY} | wc -l))
 echo "Count folders in report-history: ${COUNT}"
-
-if ! [[ "${COUNT}" =~ ^[0-9]+$ ]]; then
-  echo "Error: Count is not a valid number."
-  exit 1
-fi
-
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
 INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS + 1))
 echo "If ${COUNT} > ${INPUT_KEEP_REPORTS}"
 if ((COUNT > INPUT_KEEP_REPORTS)); then
+  cd ./${INPUT_REPORT_HISTORY}
   echo "Removing the folder with the smallest number..."
-  REPORT_TO_DELETE=$(ls -d ./${INPUT_REPORT_HISTORY}/*/ | sort -n | head -n 1)
-
-  if [[ -n "${REPORT_TO_DELETE}" ]]; then
-    rm -rv "${REPORT_TO_DELETE}"
-  else
-    echo "Error: Folder to delete not found."
-    exit 1
-  fi
-
-  pwd
+  ls | sort -n | head -n -$((${INPUT_KEEP_REPORTS} - 2)) | xargs rm -rv
   cd ${GITHUB_WORKSPACE}
-  pwd
-  ls
 fi
-
-# COUNT=$( (ls ./${INPUT_REPORT_HISTORY} | wc -l))
-# echo "Count folders in report-history: ${COUNT}"
-# echo "Keep reports count ${INPUT_KEEP_REPORTS}"
-# INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS + 1))
-# echo "If ${COUNT} > ${INPUT_KEEP_REPORTS}"
-# if ((COUNT > INPUT_KEEP_REPORTS)); then
-#   echo "Removing the folder with the smallest number..."
-#   REPORT_TO_DELETE=$(ls -d ./${INPUT_REPORT_HISTORY}/*/ | sort -n | head -n 1)
-#   rm -rv "${REPORT_TO_DELETE}"
-#   pwd
-#   cd ${GITHUB_WORKSPACE}
-#   pwd
-#   ls
-# fi
 
 # Rename INPUT_MOCHAWESOME_REPORT folder to INPUT_SUBFOLDER
 if [ -d "${INPUT_MOCHAWESOME_REPORT}" ]; then

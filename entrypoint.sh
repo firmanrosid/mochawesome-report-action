@@ -37,3 +37,5 @@ if [ -d "${INPUT_SUBFOLDER}" ]; then
 else
   echo "Folder ${INPUT_SUBFOLDER} not found."
 fi
+
+ls -R

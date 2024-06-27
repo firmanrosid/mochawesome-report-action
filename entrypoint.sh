@@ -25,7 +25,7 @@ if [[ ${INPUT_SUBFOLDER} != '' ]]; then
 fi
 
 # Removing the folder with the smallest number
-COUNT=$( ( ls ./${INPUT_ALLURE_HISTORY} | wc -l ) )
+COUNT=$( ( ls ./${INPUT_REPORT_HISTORY} | wc -l ) )
 echo "Count folders in report-history: ${COUNT}"
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
 INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS+1))

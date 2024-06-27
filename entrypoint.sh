@@ -28,9 +28,9 @@ fi
 COUNT=$( (ls ./${INPUT_REPORT_HISTORY} | wc -l))
 echo "Count folders in report-history: ${COUNT}"
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
-INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS + 1))
+INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS+1))
 echo "If ${COUNT} > ${INPUT_KEEP_REPORTS}"
-if ((COUNT > INPUT_KEEP_REPORTS)); then
+if (( COUNT > INPUT_KEEP_REPORTS )); then
   echo "Removing the folder with the smallest number..."
   ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n -$((${INPUT_KEEP_REPORTS}-2)) | xargs rm -rv;
 fi

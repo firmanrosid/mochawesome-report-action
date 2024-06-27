@@ -35,7 +35,7 @@ if ((COUNT > INPUT_KEEP_REPORTS)); then
   echo "Echo 2"
   ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V
   echo "Removing the folder with the smallest number..."
-  ls | sort -n | grep -v 'CNAME' | head -n -$((${INPUT_KEEP_REPORTS} - 2)) | xargs rm -rv
+  ls | sort -V | grep -v 'CNAME' | head -n -$((${INPUT_KEEP_REPORTS} - 2)) | xargs rm -rv
   cd ${GITHUB_WORKSPACE}
 fi
 

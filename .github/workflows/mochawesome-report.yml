@@ -30,9 +30,8 @@ jobs:
           gh_pages: gh-pages
           report_history: report-history
 
-      - name: Deploy report to Github Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.6.1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages
-          folder: report-history
-          single-commit: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./report-history

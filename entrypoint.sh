@@ -24,12 +24,12 @@ if [[ ${INPUT_SUBFOLDER} != '' ]]; then
     echo "Updated GITHUB_PAGES_WEBSITE_URL: ${GITHUB_PAGES_WEBSITE_URL}"
 fi
 
-COUNT=7
+COUNT=$( ( ls ./${INPUT_REPORT_HISTORY} | wc -l ) )
 echo "Count folders in report-history: ${COUNT}"
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
 INPUT_KEEP_REPORTS=$((INPUT_KEEP_REPORTS+1))
 echo "If ${COUNT} > ${INPUT_KEEP_REPORTS}"
-if (( COUNT > INPUT_KEEP_REPORTS )); then
+if (( ${COUNT} > INPUT_KEEP_REPORTS )); then
   echo "Removing the folder with the smallest number..."
   REPORT_TO_DELETE=$(ls -d ./${INPUT_REPORT_HISTORY}/*/ | sort -n | head -n 1)
   rm -rv "${REPORT_TO_DELETE}"

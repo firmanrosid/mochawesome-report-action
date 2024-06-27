@@ -34,7 +34,7 @@ if (( COUNT == INPUT_KEEP_REPORTS )); then
   ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n 1 | xargs rm -rv
 elif (( COUNT > INPUT_KEEP_REPORTS )); then
   echo "elif ${COUNT} > ${INPUT_KEEP_REPORTS}"
-  ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n $(( COUNT - INPUT_KEEP_REPORTS )) | xargs rm -rv
+  ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n -$((${INPUT_KEEP_REPORTS}-2)) | xargs rm -rv
 fi
 
 # Rename INPUT_MOCHAWESOME_REPORT folder to INPUT_SUBFOLDER

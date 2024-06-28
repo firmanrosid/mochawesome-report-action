@@ -29,18 +29,18 @@ COUNT=$( (ls ./${INPUT_REPORT_HISTORY} | wc -l))
 echo "Count folders in report-history: ${COUNT}"
 echo "Keep reports count ${INPUT_KEEP_REPORTS}"
 echo "Removing the folder with the smallest number..."
-if (( COUNT == INPUT_KEEP_REPORTS )); then
+if ((COUNT == INPUT_KEEP_REPORTS)); then
   echo "If ${COUNT} == ${INPUT_KEEP_REPORTS}"
   ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n 1 | xargs rm -rv
-elif (( COUNT > INPUT_KEEP_REPORTS )); then
+elif ((COUNT > INPUT_KEEP_REPORTS)); then
   echo "elif ${COUNT} > ${INPUT_KEEP_REPORTS}"
-  ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n -$((${INPUT_KEEP_REPORTS}-1)) | xargs rm -rv
+  ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n -$((${INPUT_KEEP_REPORTS} - 1)) | xargs rm -rv
 fi
 
 # Rename INPUT_MOCHAWESOME_REPORT folder to INPUT_SUBFOLDER
 if [ -d "${INPUT_MOCHAWESOME_REPORT}" ]; then
-  echo "Renaming ${INPUT_MOCHAWESOME_REPORT} to ${INPUT_SUBFOLDER}"
-  mv "${INPUT_MOCHAWESOME_REPORT}" "${INPUT_SUBFOLDER}"
+  echo "Copying ${INPUT_MOCHAWESOME_REPORT} to ${INPUT_SUBFOLDER}"
+  cp -r "${INPUT_MOCHAWESOME_REPORT}" "${INPUT_SUBFOLDER}"
 fi
 
 # Copy contents of INPUT_SUBFOLDER to INPUT_REPORT_HISTORY/INPUT_GITHUB_RUN_NUM

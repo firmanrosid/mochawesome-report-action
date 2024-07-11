@@ -1,39 +1,38 @@
-name: 'Mochawesome Report with history'
-description: 'Generate Mochawesome Report with history'
-author: 'firmansyah'
+name: "Report with history"
+description: "Generate Report with history"
+author: "firmansyah"
 inputs:
-  mochawesome_report:
-    description: 'Test report data dir'
+  report_folder:
+    description: "Test report data dir"
     required: true
-    default: 'mochawesome-report'
   gh_pages:
-    description: 'Folder with gh-pages branch'
+    description: "Folder with gh-pages branch"
     required: true
-    default: 'gh-pages'
+    default: "gh-pages"
   report_history:
-    description: 'Folder for report history'
+    description: "Folder for report history"
     required: true
-    default: 'report-history'
+    default: "report-history"
   subfolder:
-    description: 'subfolder'
+    description: "subfolder"
     required: true
     default: report
   keep_reports:
-    description: 'Keep X last reports'
+    description: "Keep X last reports"
     required: false
-    default: '5'
+    default: "5"
   github_repo:
-    description: 'GitHub repository'
+    description: "GitHub repository"
     required: true
     default: ${{ github.repository }}
   github_repo_owner:
-    description: 'GitHub repository owner'
+    description: "GitHub repository owner"
     required: true
     default: ${{ github.repository_owner }}
   github_run_num:
-    description: 'GitHub Actions build number'
+    description: "GitHub Actions build number"
     required: true
     default: ${{ github.run_number }}
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"

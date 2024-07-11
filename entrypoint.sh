@@ -37,7 +37,7 @@ elif ((COUNT > INPUT_KEEP_REPORTS)); then
   ls -d ${INPUT_REPORT_HISTORY}/*/ | sort -V | head -n -$((${INPUT_KEEP_REPORTS} - 1)) | xargs rm -rv
 fi
 
-# Rename INPUT_MOCHAWESOME_REPORT folder to INPUT_SUBFOLDER
+# Copy INPUT_MOCHAWESOME_REPORT folder to INPUT_SUBFOLDER
 if [ -d "${INPUT_MOCHAWESOME_REPORT}" ]; then
   echo "Copying ${INPUT_MOCHAWESOME_REPORT} to ${INPUT_SUBFOLDER}"
   cp -r "${INPUT_MOCHAWESOME_REPORT}" "${INPUT_SUBFOLDER}"

@@ -1,3 +1,3 @@
-# Mochawesome Report with history action
+# Report with history action
 
-Generates Mochawesome Report with history.
+Generates Report with history.

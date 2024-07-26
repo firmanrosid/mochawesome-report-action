@@ -1,0 +1,85 @@
+{
+  "start": "2024-07-02T09:17:08.600Z",
+  "end": "2024-07-02T09:17:08.952Z",
+  "capabilities": {
+    "acceptInsecureCerts": true,
+    "browserName": "chrome",
+    "browserVersion": "126.0.6478.127",
+    "chrome": {
+      "chromedriverVersion": "126.0.6478.127 (a435861f0ca363a64f7485619ee5939833823fce-refs/branch-heads/6478@{#1592})",
+      "userDataDir": "/var/folders/hz/j_tq0g9s6692n9pd05yy7sgr0000gn/T/.org.chromium.Chromium.bK3clq"
+    },
+    "fedcm:accounts": true,
+    "goog:chromeOptions": {
+      "debuggerAddress": "localhost:64862"
+    },
+    "networkConnectionEnabled": false,
+    "pageLoadStrategy": "normal",
+    "platformName": "mac",
+    "proxy": {},
+    "setWindowRect": true,
+    "strictFileInteractability": false,
+    "timeouts": {
+      "implicit": 0,
+      "pageLoad": 300000,
+      "script": 30000
+    },
+    "unhandledPromptBehavior": "dismiss and notify",
+    "webauthn:extension:credBlob": true,
+    "webauthn:extension:largeBlob": true,
+    "webauthn:extension:minPinLength": true,
+    "webauthn:extension:prf": true,
+    "webauthn:virtualAuthenticators": true,
+    "wdio:driverPID": 31190,
+    "sessionId": "ebc6390aa7dde8e76b1610b31b7713f6"
+  },
+  "host": "0.0.0.0",
+  "port": 64853,
+  "framework": "mocha",
+  "mochaOpts": {
+    "timeout": 180000
+  },
+  "duration": 352,
+  "suites": [
+    {
+      "title": "Feature Inbox",
+      "duration": 7,
+      "start": "2024-07-02T09:17:08.603Z",
+      "end": "2024-07-02T09:17:08.610Z",
+      "tests": [
+        {
+          "title": "37327 - user access inbox page",
+          "start": "2024-07-02T09:17:08.603Z",
+          "duration": 0,
+          "state": "pending",
+          "screenshots": []
+        },
+        {
+          "title": "37327 - user access inbox page",
+          "start": "2024-07-02T09:17:08.607Z",
+          "end": "2024-07-02T09:17:08.608Z",
+          "duration": 1,
+          "state": "failed",
+          "screenshots": [
+            "/Users/firmansyah/Repositories/kuyang/report-timeline/file-1719911828744.jpeg",
+            "/Users/firmansyah/Repositories/kuyang/report-timeline/file-1719911828899.jpeg"
+          ],
+          "error": {
+            "type": "Error",
+            "message": "Invalid URL: ",
+            "stack": "Error: Invalid URL: \n    at async Context.<anonymous> (file:///Users/firmansyah/Repositories/kuyang/src/test/specs/inbox.ts:7:9)"
+          }
+        }
+      ],
+      "hooks": []
+    }
+  ],
+  "specs": [
+    "file:///Users/firmansyah/Repositories/kuyang/src/test/specs/inbox.ts"
+  ],
+  "state": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  }
+}
